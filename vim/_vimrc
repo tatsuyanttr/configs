@@ -1,0 +1,86 @@
+version 6.0
+filetype off
+set nocompatible
+
+if has("vim_starting")
+  set runtimepath+=~/.vim/bundle/neobundle.vim
+endif
+
+call neobundle#begin(expand('~/.vim/bundle'))
+
+NeoBundleFetch 'Shougo/neobundle.vim'
+
+NeoBundle 'Shougo/neocomplete.vim' 
+NeoBundle 'Shougo/unite.vim'
+NeoBundle 'Shougo/vimproc.vim'
+NeoBundle 'Shougo/vimshell.vim'
+NeoBundle 'Shougo/vimfiler.vim'
+NeoBundle 'itchyny/lightline.vim'
+NeoBundle 't9md/vim-textmanip'
+NeoBundle 'scrooloose/nerdtree'
+NeoBundle 'Townk/vim-autoclose'
+NeoBundle 'TwitVim'
+NeoBundle 'nanotech/jellybeans.vim'
+
+NeoBundle 'ujihisa/unite-colorscheme'
+NeoBundle 'tomasr/molokai'
+
+"NeoBundle 'thinca/vim-ref'
+"NeoBundle 'thinca/vim-ref-ri'
+
+NeoBundle 'marcus/rsense'
+NeoBundle 'supermomonga/neocomplete-rsense.vim'
+
+" Installation check.
+NeoBundleCheck
+
+call neobundle#end()
+
+colorscheme jellybeans
+let g:rsenseUseOmniFunc = 1
+
+let twitvim_browser_cmd = 'C:\Program Files\Mozilla Firefox\firefox.exe' " for Windows
+let twitvim_force_ssl = 1 
+let twitvim_count = 40
+
+set autochdir
+set autoindent
+"set backspace=indent,eol,start
+set nobackup
+set cmdheight=2
+set expandtab
+set fileencodings=guess,ucs-bom,ucs-2le,ucs-2,iso-2022-jp-3,utf-8,euc-jisx0213,euc-jp
+"set formatexpr=autofmt#japanese#formatexpr()
+"set formatoptions=tcqmM
+set helplang=ja
+set hlsearch
+set ignorecase
+"set incsearch
+""set langnoremap
+"set laststatus=2
+set ruler
+"set runtimepath=~/vimfiles,C:\\vim/vimfiles,C:\\vim\\vim74,C:\\vim/vimfiles/after,~/vimfiles/after,C:\\vim\\plugins\\autofmt,C:\\vim\\plugins\\golang,C:\\vim\\plugins\\kaoriya,C:\\vim\\plugins\\vimdoc-ja,C:\\vim\\plugins\\vimproc
+set shiftwidth=2
+"set showmatch
+set smartcase
+set smartindent
+set tabstop=2
+set title
+"set titlestring=FVIM
+set titlestring=%{v:servername}\ -\ %t\ %m\ (%{expand('%:p:h')})
+""set undofile
+"set wildmenu
+syntax enable
+set noundofile
+set noswapfile
+filetype plugin indent on
+
+if has("autocmd") && exists("+omnifunc")
+  autocmd Filetype *
+        \ if &omnifunc == "" |
+        \   setlocal omnifunc=syntaxcomplete#Complete |
+        \ endif
+endif
+
+inoremap <F5> <C-r>=strftime("%H:%M %Y/%m/%d ")<CR>
+inoremap <silent> jj <ESC>
